@@ -5,6 +5,12 @@ import MovieCard from "./MovieCard";
 
 const API_URL = 'https://www.omdbapi.com/?apikey=68ecbe5d'
 
+/* To implement infinite scroll we need to:
+1. save the number of 'pages' we can retrieve
+2. remember current page, so we know which is next page to load
+3. load more items from next page into movies array when scroll to bottom of screen
+4. If current page === max pages then don't load more, maybe display a 'no more matches' message */
+
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,10 +22,12 @@ const App = () => {
       setMovies([]);
       return;
     }
+
     const response = await fetch(`${API_URL}&s=${title}`)
     const data = await response.json();
-    if (data.Response === 'True') {
-      setMovies(data.Search); // fills movies array with search result
+
+    if (data.Response === 'True') { // check for valid API response
+      setMovies(data.Search);
       setError('');
     } else {
       setMovies([]); // empties movies array if there's an error (like too many matches for 1 or 2 character searches)
@@ -35,7 +43,7 @@ const App = () => {
 
   useEffect(() => {
     setError('Enter search term');
-  }, []) //initially used to set default search term on page load
+  }, []) // Set displayed message on initial page load
 
   return (
     <div className="app">
@@ -61,11 +69,11 @@ const App = () => {
           {movies.map((movie) => (
             <MovieCard movie = {movie}/>
           ))}
-          {/* map method loops over all elements in array and calls MovieCard component for them */}
+          {/* map method loops over all elements in array and calls MovieCard component for each of them */}
         </div>
         ) : (
           <div className="empty">
-            <h2>{error}</h2>
+            <h2>{error}</h2> {/* display error message */}
           </div>
         )
       }
