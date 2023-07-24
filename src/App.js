@@ -11,6 +11,11 @@ const App = () => {
   const [error, setError] = useState('');
 
   const searchMovies = async (title) => {
+    if (title.length === 0) { //Guardian protects against running query against empty search term
+      setError('Enter search term');
+      setMovies([]);
+      return;
+    }
     const response = await fetch(`${API_URL}&s=${title}`)
     const data = await response.json();
     if (data.Response === 'True') {
