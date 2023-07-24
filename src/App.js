@@ -8,26 +8,39 @@ const API_URL = 'https://www.omdbapi.com/?apikey=68ecbe5d'
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState('');
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`)
     const data = await response.json();
+    if (data.Response === 'True') {
+      setMovies(data.Search); // fills movies array with search result
+      setError('');
+    } else {
+      setMovies([]); // empties movies array if there's an error (like too many matches for 1 or 2 character searches)
+      setError(data.Error);
+    }
+  }
 
-    setMovies(data.Search); // fills movies array with search result
+  const handleKeyDown = (e) => {
+    if(e.keyCode === 13) {
+      searchMovies(searchTerm);
+    }
   }
 
   useEffect(() => {
-    searchMovies('spiderman');
-  }, [])
+    setError('Enter search term');
+  }, []) //initially used to set default search term on page load
 
   return (
     <div className="app">
-      <h1>MovieLand</h1>
+      <h1>MovieSearch</h1>
 
       <div className="search">
         <input placeholder="Search for movies"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={(e) => handleKeyDown(e)}
       />
       <img
         src={SearchIcon}
@@ -47,7 +60,7 @@ const App = () => {
         </div>
         ) : (
           <div className="empty">
-            <h2>No movies found</h2>
+            <h2>{error}</h2>
           </div>
         )
       }
