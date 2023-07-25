@@ -45,10 +45,10 @@ const App = () => {
     if (data.Response === 'True') { // check for valid API response
       setMovies(data.Search);
       setError('');
-      setMaxPages(data.totalResults);
+      setMaxPages(Math.trunc(data.totalResults/10));
       setCurrentPage(1);
       setSavedTitle(title);
-      console.log('should be good page 1 search');
+      console.log('should be good first page search');
     } else {
       setMovies([]);
       setError(data.Error);
@@ -61,9 +61,9 @@ const App = () => {
 
   const addMovies = async (savedTitle) => {
     if(currentPage < maxPages) {
-      setCurrentPage(currentPage+1);
-      const response = await fetch(`${API_URL}&s=${savedTitle}&page=${currentPage}`);
+      const response = await fetch(`${API_URL}&s=${savedTitle}&page=${currentPage+1}`);
       const data = await response.json();
+      setCurrentPage(currentPage+1);
       setMovies([...movies, ...data.Search]); // append new data.Search results to movies array
     } else {
       setError('No additional matches');
@@ -129,12 +129,18 @@ const App = () => {
       </div>
 
       <div className="empty">
-          <button
-            type="button"
-            onClick={() => handleClick()}
-            >
-            Load More Movies
-          </button>
+          {
+            currentPage < maxPages ? (
+              <button
+                type="button"
+                onClick={() => handleClick()}
+                >
+                Load More
+              </button>
+            ) : (
+              <span></span>
+            )
+          }
         <h2>{error}</h2> {/* display error message */}
       </div>
     </div>
