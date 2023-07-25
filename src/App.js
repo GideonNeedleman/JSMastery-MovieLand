@@ -65,9 +65,8 @@ const App = () => {
       const data = await response.json();
       setCurrentPage(currentPage+1);
       setMovies([...movies, ...data.Search]); // append new data.Search results to movies array
-    } else {
-      setError('No additional matches');
     }
+    if(currentPage === maxPages-1) setError('No more matches');
   }
 
   const handleKeyDown = (e) => {
@@ -82,23 +81,22 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll); */
   }, []);
 
+// console.log block to track state variables
   useEffect(() => {
     console.log('max pages ' + maxPages)
   }, [maxPages]);
-
   useEffect(() => {
     console.log('current page ' + currentPage)
   }, [currentPage]);
-
   useEffect(() => {
     console.log('saved title: ' + savedTitle)
   }, [savedTitle]);
 
-  function handleScroll() {
+/*   function handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
     console.log('Scrolling...');
     addMovies(savedTitle);
-  }
+  } */
 
   function handleClick() {
     addMovies(savedTitle);
