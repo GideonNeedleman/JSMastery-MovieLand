@@ -5,20 +5,6 @@ import MovieCard from "./MovieCard";
 
 const API_URL = 'https://www.omdbapi.com/?apikey=68ecbe5d'
 
-// CURRENT WEIRD BUG: setter functions don't work on first try. they do work on second try. Why? I think something to do with being called inside async functions.
-
-/*
-To implement infinite scroll we need to:
-1. save the number of 'pages' we can retrieve
-2. remember current page, so we know which is next page to load
-3. load more items from next page into movies array when scroll to bottom of screen
-4. If current page === max pages then don't load more, maybe display a 'no more matches' message
-
-Potential bug if one edits title inside search bar, but then scrolls down without searching. The addMovies function will try to add new results to the movies array, but will reference the edited text while existing results are for unedited text
-
-Note: will need to add an up arrow to return to top since excessive scrolling is now expected
-*/
-
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -123,7 +109,6 @@ const App = () => {
         {movies.map((movie) => (
           <MovieCard movie = {movie}/>
         ))}
-        {/* map method loops over all elements in array and calls MovieCard component for each of them */}
       </div>
 
       <div className="empty">
@@ -139,7 +124,7 @@ const App = () => {
               <span></span>
             )
           }
-        <h2>{error}</h2> {/* display error message */}
+        <h2>{error}</h2>
       </div>
     </div>
   );
