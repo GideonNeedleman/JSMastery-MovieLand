@@ -258,6 +258,19 @@ h1 {
   color: #fff;
 }
 
+.detail a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.5rem;
+  text-decoration: none;
+  color: #f9d3b4;
+}
+
+.heart {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .app {
     padding: 4rem 2rem;

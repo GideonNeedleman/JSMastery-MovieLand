@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import Heart from "./Heart";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
 // Apocalypse Now: tt0078788
@@ -41,6 +42,10 @@ function Detail() {
       <p>{movie.Writer}</p>
       <h3>Actors</h3>
       <p>{movie.Actors}</p>
+      <a href={`https://www.imdb.com/title/${movie.imdbID}`}>
+        More info on IMDb
+      </a>
+      <Heart />
     </div>
   );
 }

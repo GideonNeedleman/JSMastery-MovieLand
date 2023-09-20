@@ -8,7 +8,7 @@ function Main() {
     <BrowserRouter>
       <Routes>
         <Route index element={<App />} />
-        <Route path=":imdbid" element={<Detail />} />
+        <Route path="detail/:imdbid" element={<Detail />} />
         <Route path="heart" element={<Heart />} />
       </Routes>
     </BrowserRouter>
