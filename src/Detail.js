@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
@@ -9,6 +9,7 @@ function Detail() {
   const { imdbid } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function searchMovie(imdbid) {
@@ -27,11 +28,12 @@ function Detail() {
   return (
     <div className="detail">
       <h1>{movie.Title}</h1>
+      {/* <button onClick={() => navigate(-1)}>Back</button> */}
+      <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
       <h2>
         {movie.Year} - {movie.Runtime}
       </h2>
-      <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
-      <h3>Plot</h3>
+      {/* <h3>Plot</h3> */}
       <p>{movie.Plot}</p>
       <h3>Director</h3>
       <p>{movie.Director}</p>
