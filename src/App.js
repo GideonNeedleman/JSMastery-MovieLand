@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import "./App.css";
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
 // const MovieContext = createContext();
@@ -60,11 +61,11 @@ const App = () => {
     if (currentPage === maxPages - 1) setError("No more matches");
   };
 
-  const handleKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      searchMovies(searchTerm);
-    }
-  };
+  // const handleKeyDown = (e) => {
+  //   if (e.keyCode === 13) {
+  //     searchMovies(searchTerm);
+  //   }
+  // };
 
   useEffect(() => {
     setError("Enter search term"); // Set displayed message on initial page load
@@ -96,8 +97,8 @@ const App = () => {
   return (
     <div className="app">
       <h1>MovieSearch</h1>
-
-      <div className="search">
+      <SearchBar />
+      {/* <div className="search">
         <input
           placeholder="Search for movies"
           value={searchTerm}
@@ -109,7 +110,7 @@ const App = () => {
           alt="search"
           onClick={() => searchMovies(searchTerm)}
         />
-      </div>
+      </div> */}
 
       <div className="container">
         {movies.map((movie) => (

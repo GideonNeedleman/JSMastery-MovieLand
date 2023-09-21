@@ -32,6 +32,11 @@ function reducer(state, action) {
         ...state,
         error: "Enter search term",
       };
+    case "setSearchTerm":
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
     case "loadMovies":
       return {
         ...state,
@@ -97,6 +102,8 @@ function MovieProvider({ children }) {
         maxPages,
         currentPage,
         searchMovies,
+
+        dispatch,
       }}
     >
       {children}
