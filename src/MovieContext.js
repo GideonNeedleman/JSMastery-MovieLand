@@ -61,11 +61,22 @@ function reducer(state, action) {
     case "delFavorite":
       return {
         ...state,
-        favorites: [],
+        favorites: state.favorites.filter((el) => el.imdbid !== action.payload),
       };
     case "updateNote":
       return {
         ...state,
+        favorites: [
+          ...state.favorites,
+          {
+            ...state.favorites[
+              state.favorites.findIndex(
+                (el) => el.imdbid === action.payload.imdbid
+              )
+            ],
+            note: action.payload.note,
+          },
+        ],
       };
     default:
       throw new Error("Unknown action type");
@@ -82,6 +93,8 @@ function MovieProvider({ children }) {
       ? { ...initialState, favorites: JSON.parse(storedValue) }
       : initialState;
   });
+
+  console.log(favorites);
 
   // useEffect to save favorites to localStorage
   useEffect(() => {

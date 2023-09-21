@@ -8,13 +8,16 @@ function Bookmark({ imdbid }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [note, setNote] = useState("");
 
-  function handleAddFavorite(e) {
+  function handleFavorite(e) {
     e.preventDefault();
-    dispatch({ type: "addFavorite", payload: { imdbid: imdbid, note: note } });
-  }
-  function handleDelFavorite(e) {
-    e.preventDefault();
-    dispatch({ type: "delFavorite", payload: imdbid });
+    if (isFavorite) {
+      dispatch({ type: "delFavorite", payload: imdbid });
+    } else {
+      dispatch({
+        type: "addFavorite",
+        payload: { imdbid: imdbid, note: note },
+      });
+    }
   }
 
   const handleKeyDown = (e) => {
@@ -22,7 +25,7 @@ function Bookmark({ imdbid }) {
       dispatch({ type: "updateNote", payload: { imdbid, note } });
       return;
     }
-    if (e.keyCode === 13) handleAddFavorite(e);
+    if (e.keyCode === 13) handleFavorite(e);
   };
 
   // check if movie is already in favorites list
@@ -30,18 +33,16 @@ function Bookmark({ imdbid }) {
     setIsFavorite(favorites.some((el) => el.imdbid === imdbid));
   }, [favorites, imdbid]);
 
-  useEffect(() => console.log("isFavorite = " + isFavorite));
-
   return (
     <div className="bookmark">
-      <p>
+      <p onClick={handleFavorite}>
         {isFavorite ? (
-          <span onClick={handleDelFavorite}>
-            <img src={BookmarkFull} alt="" /> Delete movie
+          <span>
+            <img src={BookmarkFull} alt="full bookmark icon" /> Delete movie
           </span>
         ) : (
-          <span onClick={handleAddFavorite}>
-            <img src={BookmarkEmpty} alt="" /> Add movie
+          <span>
+            <img src={BookmarkEmpty} alt="empty bookmark icon" /> Add movie
           </span>
         )}
       </p>
