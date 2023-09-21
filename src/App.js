@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
+import MovieList from "./MovieList";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
 // const MovieContext = createContext();
@@ -16,7 +17,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState();
   const [savedTitle, setSavedTitle] = useState(""); // ensure additional results match searched-for title
 
-  const searchMovies = async (title) => {
+  /*   const searchMovies = async (title) => {
     if (title.length === 0) {
       //Guardian protects against running query against empty search term
       setMovies([]);
@@ -47,7 +48,7 @@ const App = () => {
       setSavedTitle("");
       console.log("hit response error");
     }
-  };
+  }; */
 
   const addMovies = async (savedTitle) => {
     if (currentPage < maxPages) {
@@ -74,7 +75,7 @@ const App = () => {
   }, []);
 
   // console.log block to track state variables
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log("max pages " + maxPages);
   }, [maxPages]);
   useEffect(() => {
@@ -82,7 +83,7 @@ const App = () => {
   }, [currentPage]);
   useEffect(() => {
     console.log("saved title: " + savedTitle);
-  }, [savedTitle]);
+  }, [savedTitle]); */
 
   /*   function handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
@@ -112,11 +113,12 @@ const App = () => {
         />
       </div> */}
 
-      <div className="container">
+      {/* <div className="container">
         {movies.map((movie) => (
           <MovieCard movie={movie} />
         ))}
-      </div>
+      </div> */}
+      <MovieList />
 
       <div className="empty">
         {currentPage < maxPages ? (
