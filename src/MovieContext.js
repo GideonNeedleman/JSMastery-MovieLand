@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const MovieContext = createContext();
-const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
+const API_URL = "https://www.omdbapi.com/?apikey=";
+const API_KEY = "68ecbe5d";
 
 const initialState = {
   movies: [], //array of movie results
@@ -26,11 +27,6 @@ function reducer(state, action) {
       return {
         ...state,
         isLoading: false,
-      };
-    case "emptySearch":
-      return {
-        ...state,
-        error: "Enter search term",
       };
     case "setSearchTerm":
       return {
@@ -80,13 +76,16 @@ function MovieProvider({ children }) {
   }, [favorites]);
 
   async function searchMovies(title) {
-    if (title.length === 0) dispatch({ type: "emptySearch" });
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
+    if (title.length === 0) return;
+
+    dispatch({ type: "loading" });
+    const res = await fetch(`${API_URL}${API_KEY}&s=${title}`);
+    const data = await res.json();
+    dispatch({ type: "loaded" });
 
     if (data.Response === "True")
       dispatch({ type: "loadMovies", payload: data });
-    else dispatch({ type: "error", payload: data.error });
+    else dispatch({ type: "error", payload: data.Error });
   }
 
   return (

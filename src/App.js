@@ -5,6 +5,8 @@ import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import ErrorMessage from "./ErrorMessage";
+import Spinner from "./Spinner";
+import { useMovie } from "./MovieContext";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
 // const MovieContext = createContext();
@@ -51,7 +53,7 @@ const App = () => {
     }
   }; */
 
-  const addMovies = async (savedTitle) => {
+  /*   const addMovies = async (savedTitle) => {
     if (currentPage < maxPages) {
       const response = await fetch(
         `${API_URL}&s=${savedTitle}&page=${currentPage + 1}`
@@ -65,15 +67,16 @@ const App = () => {
 
   function handleClick() {
     addMovies(savedTitle);
-  }
+  } */
+  const { isLoading } = useMovie();
 
   return (
     <div className="app">
       <h1>MovieSearch</h1>
       <SearchBar />
-      <MovieList />
+      {isLoading ? <Spinner /> : <MovieList />}
 
-      <div className="empty">
+      {/*       <div className="empty">
         {currentPage < maxPages ? (
           <button type="button" onClick={() => handleClick()}>
             Load More
@@ -81,7 +84,7 @@ const App = () => {
         ) : (
           <span></span>
         )}
-      </div>
+      </div> */}
       <ErrorMessage />
     </div>
   );

@@ -24,7 +24,12 @@ function Detail() {
     searchMovie(imdbid);
   }, [imdbid]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="center">
+        <Spinner />;
+      </div>
+    );
 
   return (
     <div className="detail">
