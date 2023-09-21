@@ -89,8 +89,6 @@ function MovieProvider({ children }) {
     else dispatch({ type: "error", payload: data.error });
   }
 
-  // useEffect to clear movies array if input changes
-
   return (
     <MovieContext.Provider
       value={{

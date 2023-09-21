@@ -4,6 +4,7 @@ import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
+import ErrorMessage from "./ErrorMessage";
 
 const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
 // const MovieContext = createContext();
@@ -62,35 +63,6 @@ const App = () => {
     if (currentPage === maxPages - 1) setError("No more matches");
   };
 
-  // const handleKeyDown = (e) => {
-  //   if (e.keyCode === 13) {
-  //     searchMovies(searchTerm);
-  //   }
-  // };
-
-  useEffect(() => {
-    setError("Enter search term"); // Set displayed message on initial page load
-    /*     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll); */
-  }, []);
-
-  // console.log block to track state variables
-  /*   useEffect(() => {
-    console.log("max pages " + maxPages);
-  }, [maxPages]);
-  useEffect(() => {
-    console.log("current page " + currentPage);
-  }, [currentPage]);
-  useEffect(() => {
-    console.log("saved title: " + savedTitle);
-  }, [savedTitle]); */
-
-  /*   function handleScroll() {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-    console.log('Scrolling...');
-    addMovies(savedTitle);
-  } */
-
   function handleClick() {
     addMovies(savedTitle);
   }
@@ -99,25 +71,6 @@ const App = () => {
     <div className="app">
       <h1>MovieSearch</h1>
       <SearchBar />
-      {/* <div className="search">
-        <input
-          placeholder="Search for movies"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={(e) => handleKeyDown(e)}
-        />
-        <img
-          src={SearchIcon}
-          alt="search"
-          onClick={() => searchMovies(searchTerm)}
-        />
-      </div> */}
-
-      {/* <div className="container">
-        {movies.map((movie) => (
-          <MovieCard movie={movie} />
-        ))}
-      </div> */}
       <MovieList />
 
       <div className="empty">
@@ -128,8 +81,8 @@ const App = () => {
         ) : (
           <span></span>
         )}
-        <h2>{error}</h2>
       </div>
+      <ErrorMessage />
     </div>
   );
 };
