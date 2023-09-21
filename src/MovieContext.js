@@ -63,6 +63,10 @@ function reducer(state, action) {
         ...state,
         favorites: [],
       };
+    case "updateNote":
+      return {
+        ...state,
+      };
     default:
       throw new Error("Unknown action type");
   }
