@@ -1,6 +1,6 @@
 function Spinner() {
   return (
-    <div class="lds-spinner">
+    <div className="lds-spinner">
       <div></div>
       <div></div>
       <div></div>

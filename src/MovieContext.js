@@ -13,7 +13,7 @@ const initialState = {
   maxPages: null, //track total pages from fetch results
   currentPage: null, //track current page
 };
-const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
+// const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
 
 function reducer(state, action) {
   switch (action.type) {
@@ -53,6 +53,11 @@ function reducer(state, action) {
         maxPages: 0,
         currentPage: 0,
       };
+    case "addFavorite":
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
     default:
       throw new Error("Unknown action type");
   }
@@ -77,6 +82,7 @@ function MovieProvider({ children }) {
   async function searchMovies(title) {
     if (title.length === 0) return;
 
+    // possible try catch block to catch errors
     dispatch({ type: "loading" });
     const res = await fetch(`${API_URL}${API_KEY}&s=${title}`);
     const data = await res.json();

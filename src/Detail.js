@@ -20,7 +20,7 @@ function Detail() {
       const data = await res.json();
       setIsLoading(false);
       setMovie(data);
-      console.log(data);
+      // console.log(data);
     }
     searchMovie(imdbid);
   }, [imdbid]);
@@ -40,7 +40,7 @@ function Detail() {
         {movie.Year} - {movie.Runtime}
       </h2>
       <p>{movie.Plot}</p>
-      <Bookmark />
+      <Bookmark imdbid={imdbid} />
       <h3>Director</h3>
       <p>{movie.Director}</p>
       <h3>Writer</h3>
