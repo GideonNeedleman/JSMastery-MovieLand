@@ -11,7 +11,7 @@ const initialState = {
   error: "", //error message
   maxPages: null, //track total pages from fetch results
   currentPage: null, //track current page
-  savedTitle: null, //searched title, saved for loading future pages. Otherwise changing searchTerm can cause additional pages to load from new searchTerm. Workaround is clearing movies if searchTerm changes.
+  // savedTitle: null, //searched title, saved for loading future pages. Otherwise changing searchTerm can cause additional pages to load from new searchTerm. Workaround is clearing movies if searchTerm changes.
 };
 const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
 
@@ -60,16 +60,7 @@ function reducer(state, action) {
 
 function MovieProvider({ children }) {
   const [
-    {
-      movies,
-      favorites,
-      searchTerm,
-      isLoading,
-      error,
-      maxPages,
-      currentPage,
-      savedTitle,
-    },
+    { movies, favorites, searchTerm, isLoading, error, maxPages, currentPage },
     dispatch,
   ] = useReducer(reducer, initialState, () => {
     const storedValue = localStorage.getItem("favorites");
@@ -105,7 +96,6 @@ function MovieProvider({ children }) {
         error,
         maxPages,
         currentPage,
-        savedTitle,
         searchMovies,
       }}
     >
