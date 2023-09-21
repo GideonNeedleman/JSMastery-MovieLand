@@ -58,6 +58,11 @@ function reducer(state, action) {
         ...state,
         favorites: [...state.favorites, action.payload],
       };
+    case "delFavorite":
+      return {
+        ...state,
+        favorites: [],
+      };
     default:
       throw new Error("Unknown action type");
   }

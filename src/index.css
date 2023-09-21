@@ -340,7 +340,29 @@ h1 {
 }
 
 .bookmark {
+  padding: 1rem;
+  margin: 0.3rem;
+  background-color: #343739;
+  border-radius: 1rem;
+}
+
+.bookmark p {
   color: #f9d3b4;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.bookmark input {
+  border: none;
+  font-size: 1rem;
+  font-family: var(--font-raleway);
+  font-weight: 400;
+  overflow: hidden;
+
+  outline: none;
+  color: #a1a1a1;
+  background: #1f2123;
 }
 
 @media screen and (max-width: 600px) {
