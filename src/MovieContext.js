@@ -12,7 +12,6 @@ const initialState = {
   error: "", //error message
   maxPages: null, //track total pages from fetch results
   currentPage: null, //track current page
-  // savedTitle: null, //searched title, saved for loading future pages. Otherwise changing searchTerm can cause additional pages to load from new searchTerm. Workaround is clearing movies if searchTerm changes.
 };
 const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
 

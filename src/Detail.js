@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import Heart from "./Heart";
+import Bookmark from "./Bookmark";
 
-const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
+const API_URL = "https://www.omdbapi.com/?apikey=";
+const API_KEY = "68ecbe5d";
 // Apocalypse Now: tt0078788
 
 function Detail() {
   const { imdbid } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState({});
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function searchMovie(imdbid) {
       setIsLoading(true);
-      const res = await fetch(`${API_URL}&i=${imdbid}`);
+      const res = await fetch(`${API_URL}${API_KEY}&i=${imdbid}`);
       const data = await res.json();
       setIsLoading(false);
       setMovie(data);
@@ -34,12 +35,12 @@ function Detail() {
   return (
     <div className="detail">
       <h1>{movie.Title}</h1>
-      {/* <button onClick={() => navigate(-1)}>Back</button> */}
       <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
       <h2>
         {movie.Year} - {movie.Runtime}
       </h2>
       <p>{movie.Plot}</p>
+      <Bookmark />
       <h3>Director</h3>
       <p>{movie.Director}</p>
       <h3>Writer</h3>

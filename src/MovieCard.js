@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-  // object destructuring to get movie prop. Saves us from writing props.movie
   return (
     <Link to={"detail/" + movie.imdbID}>
       <div className="movie">

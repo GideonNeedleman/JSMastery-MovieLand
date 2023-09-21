@@ -1,13 +1,16 @@
 import MovieCard from "./MovieCard";
 import { useMovie } from "./MovieContext";
+import Spinner from "./Spinner";
 
 function MovieList() {
-  const { movies } = useMovie();
+  const { movies, isLoading } = useMovie();
   return (
     <div className="container">
-      {movies.map((movie) => (
-        <MovieCard movie={movie} />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        movies.map((movie) => <MovieCard movie={movie} />)
+      )}
     </div>
   );
 }

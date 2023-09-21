@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react";
-// import "./App.css";
-import SearchIcon from "./search.svg";
-import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import ErrorMessage from "./ErrorMessage";
-import Spinner from "./Spinner";
-import { useMovie } from "./MovieContext";
-
-const API_URL = "https://www.omdbapi.com/?apikey=68ecbe5d";
-// const MovieContext = createContext();
+import Header from "./Header";
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState("");
-
-  const [maxPages, setMaxPages] = useState();
-  const [currentPage, setCurrentPage] = useState();
-  const [savedTitle, setSavedTitle] = useState(""); // ensure additional results match searched-for title
-
   /*   const searchMovies = async (title) => {
     if (title.length === 0) {
       //Guardian protects against running query against empty search term
@@ -68,14 +52,13 @@ const App = () => {
   function handleClick() {
     addMovies(savedTitle);
   } */
-  const { isLoading } = useMovie();
 
   return (
     <div className="app">
-      <h1>MovieSearch</h1>
+      <Header />
       <SearchBar />
-      {isLoading ? <Spinner /> : <MovieList />}
-
+      <MovieList />
+      <ErrorMessage />
       {/*       <div className="empty">
         {currentPage < maxPages ? (
           <button type="button" onClick={() => handleClick()}>
@@ -85,7 +68,6 @@ const App = () => {
           <span></span>
         )}
       </div> */}
-      <ErrorMessage />
     </div>
   );
 };

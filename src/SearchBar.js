@@ -1,5 +1,5 @@
 import { useMovie } from "./MovieContext";
-import SearchIcon from "./search.svg";
+import SearchIcon from "./assets/search.svg";
 
 function SearchBar() {
   const { searchTerm, searchMovies, dispatch } = useMovie();
