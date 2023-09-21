@@ -34,7 +34,6 @@ function Detail() {
       <h2>
         {movie.Year} - {movie.Runtime}
       </h2>
-      {/* <h3>Plot</h3> */}
       <p>{movie.Plot}</p>
       <h3>Director</h3>
       <p>{movie.Director}</p>
@@ -45,7 +44,7 @@ function Detail() {
       <a href={`https://www.imdb.com/title/${movie.imdbID}`}>
         More info on IMDb
       </a>
-      <Heart />
+      <Heart imdbid={imdbid} />
     </div>
   );
 }
