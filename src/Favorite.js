@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useMovie } from "./MovieContext";
 
 function Favorite({ fav }) {
@@ -10,7 +11,9 @@ function Favorite({ fav }) {
       >
         &times;
       </span>
-      <img src={fav.poster} alt={`poster of ${fav.title}`} />
+      <Link to={"/detail/" + fav.imdbid}>
+        <img src={fav.poster} alt={`poster of ${fav.title}`} />
+      </Link>
       <div>
         <p className="title">{fav.title}</p>
         <textarea
