@@ -5,7 +5,6 @@ import Bookmark from "./Bookmark";
 
 const API_URL = "https://www.omdbapi.com/?apikey=";
 const API_KEY = "68ecbe5d";
-// Apocalypse Now: tt0078788
 
 function Detail() {
   const { imdbid } = useParams();
@@ -19,7 +18,6 @@ function Detail() {
       const data = await res.json();
       setIsLoading(false);
       setMovie(data);
-      // console.log(data);
     }
     searchMovie(imdbid);
   }, [imdbid]);
