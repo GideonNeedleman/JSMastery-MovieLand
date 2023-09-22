@@ -36,8 +36,9 @@ function Bookmark({ imdbid, title, poster, year }) {
 
   // load existing note into note field
   useEffect(() => {
-    setNote(favorites.filter((el) => el.imdbid === imdbid)[0]?.note);
-  }, [favorites, imdbid]);
+    if (isFavorite)
+      setNote(favorites.filter((el) => el.imdbid === imdbid)[0].note);
+  }, [favorites, imdbid, isFavorite]);
 
   return (
     <div className="bookmark">
