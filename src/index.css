@@ -378,7 +378,7 @@ h1 {
 }
 
 .favorites .delete {
-  color: red;
+  color: #f00;
   font-size: 2rem;
   cursor: pointer;
 }
