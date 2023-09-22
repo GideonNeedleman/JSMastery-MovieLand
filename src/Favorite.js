@@ -5,7 +5,7 @@ function Favorite({ fav }) {
   const { dispatch } = useMovie();
 
   function confirmDelete() {
-    if (window.confirm("Are you sure you want to delete?"))
+    if (window.confirm("Are you sure you want to remove?"))
       dispatch({ type: "delFavorite", payload: fav.imdbid });
   }
 

@@ -9,7 +9,9 @@ function Bookmark({ imdbid, title, poster, year }) {
 
   function handleBookmark() {
     if (isFavorite) {
-      dispatch({ type: "delFavorite", payload: imdbid });
+      if (window.confirm("Are you sure you want to remove?")) {
+        dispatch({ type: "delFavorite", payload: imdbid });
+      }
     } else {
       dispatch({
         type: "addFavorite",
