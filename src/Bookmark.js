@@ -10,7 +10,6 @@ function Bookmark({ imdbid, title, poster, year }) {
   function handleBookmark() {
     if (isFavorite) {
       dispatch({ type: "delFavorite", payload: imdbid });
-      // setNote("");
     } else {
       dispatch({
         type: "addFavorite",
@@ -38,13 +37,6 @@ function Bookmark({ imdbid, title, poster, year }) {
     setIsFavorite(favorites.some((el) => el.imdbid === imdbid));
   }, [favorites, imdbid]);
 
-  // load existing note into note field
-  /*   useEffect(() => {
-    if (isFavorite) {
-      setNote(favorites.filter((el) => el.imdbid === imdbid)[0]?.note);
-    }
-  }, [favorites, imdbid, isFavorite]); */
-
   return (
     <div className="bookmark">
       <p onClick={handleBookmark}>
@@ -54,7 +46,7 @@ function Bookmark({ imdbid, title, poster, year }) {
           </span>
         ) : (
           <span>
-            <img src={BookmarkEmpty} alt="empty bookmark icon" /> Add movie
+            <img src={BookmarkEmpty} alt="empty bookmark icon" /> Save movie
           </span>
         )}
       </p>

@@ -4,15 +4,17 @@ import { useMovie } from "./MovieContext";
 function Favorite({ fav }) {
   const { dispatch } = useMovie();
 
+  function confirmDelete() {
+    if (window.confirm("Are you sure you want to delete?"))
+      dispatch({ type: "delFavorite", payload: fav.imdbid });
+  }
+
   return (
     <li>
       <span
         className="delete"
         onClick={
-          () =>
-            alert(
-              "confirm"
-            ) /* dispatch({ type: "delFavorite", payload: fav.imdbid }) */
+          confirmDelete /* dispatch({ type: "delFavorite", payload: fav.imdbid }) */
         }
       >
         &times;
