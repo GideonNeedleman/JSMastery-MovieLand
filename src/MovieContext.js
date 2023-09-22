@@ -66,17 +66,11 @@ function reducer(state, action) {
     case "updateNote":
       return {
         ...state,
-        favorites: [
-          ...state.favorites,
-          {
-            ...state.favorites[
-              state.favorites.findIndex(
-                (el) => el.imdbid === action.payload.imdbid
-              )
-            ],
-            note: action.payload.note,
-          },
-        ],
+        favorites: state.favorites.map((el) =>
+          el.imdbid !== action.payload.imdbid
+            ? el
+            : { ...el, note: action.payload.note }
+        ),
       };
     default:
       throw new Error("Unknown action type");
