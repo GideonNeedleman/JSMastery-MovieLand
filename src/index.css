@@ -197,6 +197,15 @@ h1 {
   justify-content: center;
 }
 
+/* .header {
+  width: 100%;
+  text-align: center;
+}
+
+.header h1 {
+  text-align: center;
+} */
+
 .lds-spinner {
   color: official;
   display: inline-block;
@@ -333,6 +342,10 @@ h1 {
   margin: 0.5rem;
   text-decoration: none;
   color: #f9d3b4;
+  padding: 1rem;
+  margin: 0.5rem;
+  background-color: #343739;
+  border-radius: 1rem;
 }
 
 .heart {
@@ -344,6 +357,7 @@ h1 {
   margin: 0.3rem;
   background-color: #343739;
   border-radius: 1rem;
+  width: 25rem;
 }
 
 .bookmark p {
@@ -359,7 +373,7 @@ h1 {
   font-family: var(--font-raleway);
   font-weight: 400;
   overflow: hidden;
-
+  width: 100%;
   outline: none;
   color: #a1a1a1;
   background: #1f2123;
