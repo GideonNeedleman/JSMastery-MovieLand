@@ -6,9 +6,7 @@ function Favorite({ fav }) {
     <li>
       <span
         className="delete"
-        /* onClick={() =>
-                dispatch({ type: "delFavorite", payload: fav.imdbid })
-              } */
+        onClick={() => dispatch({ type: "delFavorite", payload: fav.imdbid })}
       >
         &times;
       </span>
