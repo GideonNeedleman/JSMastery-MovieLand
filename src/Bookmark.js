@@ -6,7 +6,10 @@ import BookmarkFull from "./assets/bookmark-full.svg";
 function Bookmark({ imdbid }) {
   const { favorites, dispatch } = useMovie();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(() => {
+    if (isFavorite)
+      return favorites.filter((el) => el.imdbid === imdbid)[0].note;
+  });
 
   function handleFavorite(e) {
     e.preventDefault();
@@ -32,6 +35,12 @@ function Bookmark({ imdbid }) {
   useEffect(() => {
     setIsFavorite(favorites.some((el) => el.imdbid === imdbid));
   }, [favorites, imdbid]);
+
+  // load existing note into note field
+  /*   useEffect(() => {
+    if (isFavorite)
+      setNote(favorites.filter((el) => el.imdbid === imdbid)[0].note);
+  }, [isFavorite, favorites, imdbid]); */
 
   return (
     <div className="bookmark">

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
-import Heart from "./Heart";
 import Bookmark from "./Bookmark";
 
 const API_URL = "https://www.omdbapi.com/?apikey=";
@@ -50,7 +49,6 @@ function Detail() {
       <a href={`https://www.imdb.com/title/${movie.imdbID}`}>
         More info on IMDb
       </a>
-      <Heart imdbid={imdbid} />
     </div>
   );
 }
