@@ -6,7 +6,6 @@ import BookmarkFull from "./assets/bookmark-full.svg";
 function Bookmark({ imdbid, title, poster, year }) {
   const { favorites, dispatch } = useMovie();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [note, setNote] = useState("");
 
   function handleBookmark() {
     if (isFavorite) {
@@ -15,7 +14,7 @@ function Bookmark({ imdbid, title, poster, year }) {
     } else {
       dispatch({
         type: "addFavorite",
-        payload: { imdbid, note, title, poster, year },
+        payload: { imdbid, note: "", title, poster, year },
       });
     }
   }
@@ -61,9 +60,8 @@ function Bookmark({ imdbid, title, poster, year }) {
       </p>
       <textarea
         placeholder="optional note"
-        value={favorites.filter((el) => el.imdbid === imdbid)[0]?.note}
+        value={favorites.filter((el) => el.imdbid === imdbid)[0]?.note || ""}
         onChange={(e) => handleChange(e.target.value)}
-        // onKeyDown={(e) => handleKeyDown(e)}
       />
     </div>
   );
