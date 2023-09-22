@@ -9,7 +9,7 @@ function MovieList() {
       {isLoading ? (
         <Spinner />
       ) : (
-        movies.map((movie) => <MovieCard movie={movie} />)
+        movies.map((movie) => <MovieCard movie={movie} key={movie.imdbid} />)
       )}
     </div>
   );

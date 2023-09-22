@@ -3,7 +3,7 @@ import { useMovie } from "./MovieContext";
 import BookmarkEmpty from "./assets/bookmark-empty.svg";
 import BookmarkFull from "./assets/bookmark-full.svg";
 
-function Bookmark({ imdbid }) {
+function Bookmark({ imdbid, title, poster, year }) {
   const { favorites, dispatch } = useMovie();
   const [isFavorite, setIsFavorite] = useState(false);
   const [note, setNote] = useState("");
@@ -16,7 +16,7 @@ function Bookmark({ imdbid }) {
     } else {
       dispatch({
         type: "addFavorite",
-        payload: { imdbid: imdbid, note: note },
+        payload: { imdbid, note, title, poster, year },
       });
     }
   }
@@ -44,7 +44,7 @@ function Bookmark({ imdbid }) {
       <p onClick={handleFavorite}>
         {isFavorite ? (
           <span>
-            <img src={BookmarkFull} alt="full bookmark icon" /> Delete movie
+            <img src={BookmarkFull} alt="full bookmark icon" /> Remove movie
           </span>
         ) : (
           <span>
@@ -53,7 +53,7 @@ function Bookmark({ imdbid }) {
         )}
       </p>
       <input
-        placeholder="add note"
+        placeholder="optional note"
         value={note}
         onChange={(e) => setNote(e.target.value)}
         onKeyDown={handleKeyDown}

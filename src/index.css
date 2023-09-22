@@ -365,6 +365,46 @@ h1 {
   background: #1f2123;
 }
 
+.favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f9d3b4;
+}
+
+.favorites ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.favorites .delete {
+  color: red;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.favorites img {
+  height: 5rem;
+  margin: 0.25rem 1rem;
+}
+
+.favorites li {
+  display: flex;
+  align-items: center;
+}
+
+.favorites .note {
+  border: none;
+  font-size: 1rem;
+  font-family: var(--font-raleway);
+  font-weight: 400;
+  overflow: hidden;
+
+  outline: none;
+  color: #a1a1a1;
+  background: #1f2123;
+}
+
 @media screen and (max-width: 600px) {
   .app {
     padding: 4rem 2rem;

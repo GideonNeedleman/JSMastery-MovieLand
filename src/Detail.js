@@ -37,7 +37,12 @@ function Detail() {
         {movie.Year} - {movie.Runtime}
       </h2>
       <p>{movie.Plot}</p>
-      <Bookmark imdbid={imdbid} />
+      <Bookmark
+        imdbid={imdbid}
+        title={movie.Title}
+        poster={movie.Poster}
+        year={movie.Year}
+      />
       <h3>Director</h3>
       <p>{movie.Director}</p>
       <h3>Writer</h3>
