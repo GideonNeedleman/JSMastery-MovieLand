@@ -9,4 +9,5 @@ Search for movies, view movie details, add movies to a favorites list.
 3. ~~Toggle Add/Remove movie button in Details depending on state~~
 4. Infinite scroll in MovieList
 5. Up to top arrow in MovieList
-6. Autofill note when loading Bookmark
+6. ~~Autofill note when loading Bookmark~~
+7. ~~Auto add & update when typing note in Details - current bug: last keypress in Detail note doesn't save~~
