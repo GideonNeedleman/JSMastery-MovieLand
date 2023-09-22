@@ -1,4 +1,5 @@
 import Favorite from "./Favorite";
+import Header from "./Header";
 import { useMovie } from "./MovieContext";
 
 function FavoritesList() {
@@ -6,7 +7,7 @@ function FavoritesList() {
 
   return (
     <div className="favorites">
-      <h1>Favorites</h1>
+      <Header title="Favorites" />
       <ul>
         {favorites.map((fav) => (
           <Favorite fav={fav} key={fav.imdbid} />

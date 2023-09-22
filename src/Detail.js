@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import Bookmark from "./Bookmark";
+import Header from "./Header";
 
 const API_URL = "https://www.omdbapi.com/?apikey=";
 const API_KEY = "68ecbe5d";
@@ -31,7 +32,7 @@ function Detail() {
 
   return (
     <div className="detail">
-      <h1>{movie.Title}</h1>
+      <Header title={movie.Title} />
       <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
       <h2>
         {movie.Year} - {movie.Runtime}
