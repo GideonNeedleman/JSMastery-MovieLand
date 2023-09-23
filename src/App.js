@@ -55,7 +55,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header title="Movie Hoarder" />
+      <Header title="Movie Search" />
       <SearchBar />
       <MovieList />
       <ErrorMessage />

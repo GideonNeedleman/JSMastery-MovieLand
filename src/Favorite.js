@@ -22,7 +22,7 @@ function Favorite({ fav }) {
       <Link to={"/detail/" + fav.imdbid}>
         <img src={fav.poster} alt={`poster of ${fav.title}`} />
       </Link>
-      <div>
+      <div className="title-note">
         <p className="title">{fav.title}</p>
         <textarea
           className="note"

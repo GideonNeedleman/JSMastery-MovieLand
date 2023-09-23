@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  text-align: center;
+}
+
+.header h1 {
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  color: #f9d3b4;
+}
+
+:global .active {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}

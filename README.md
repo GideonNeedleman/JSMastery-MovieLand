@@ -1,5 +1,6 @@
 # Movie App
 
+React-based SPA that fetches search results from public API to display matching movies.
 Search for movies, view movie details, add movies to a favorites list.
 
 ## To do
@@ -13,3 +14,5 @@ Search for movies, view movie details, add movies to a favorites list.
 7. ~~Auto add & update when typing note in Details - current bug: last keypress in Detail note doesn't save~~
 8. ~~Add alert confirmation to delete on Favorite~~
 9. ~~See if rerendering the Bookmark input field will clear text on delete. No use conditional || rendering to assign value to field~~
+10. ~~Fix Header to use NavLink & .active class to hide current route~~
+11. Fix missing images in Detail & Favorites

@@ -50,7 +50,10 @@ function Detail() {
       <p>{movie.Writer}</p>
       <h3>Actors</h3>
       <p>{movie.Actors}</p>
-      <a href={`https://www.imdb.com/title/${movie.imdbID}`}>
+      <a
+        href={`https://www.imdb.com/title/${movie.imdbID}`}
+        className="imdb-link"
+      >
         More info on IMDb
       </a>
     </div>
