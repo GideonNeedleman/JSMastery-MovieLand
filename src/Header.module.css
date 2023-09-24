@@ -26,3 +26,7 @@
 :global .active {
   font-size: 0 !important;
 }
+
+:global .active img {
+  display: none;
+}

@@ -1,8 +1,10 @@
+import arrow from "./assets/up-arrow.svg";
+
 function ScrollToTop() {
   return (
-    <div className="scroll-to-top" onClick={() => window.scrollTo(0, 0)}>
-      🔝
-    </div>
+    <button className="scroll-to-top" onClick={() => window.scrollTo(0, 0)}>
+      <img src={arrow} alt="" />
+    </button>
   );
 }
 
