@@ -38,7 +38,14 @@ function reducer(state, action) {
         movies: action.payload.Search,
         error: "",
         maxPages: Math.trunc(action.payload.totalResults / 10),
-        currentPage: 1,
+        currentPage: 2,
+      };
+    case "loadMoreMovies":
+      return {
+        ...state,
+        movies: [...state.movies, ...action.payload.Search],
+        error: "",
+        currentPage: state.currentPage + 1,
       };
     case "error":
       return {
@@ -104,8 +111,23 @@ function MovieProvider({ children }) {
     const data = await res.json();
     dispatch({ type: "loaded" });
 
+    // console.log(`${API_URL}${API_KEY}&s=${title}`);
+
     if (data.Response === "True")
       dispatch({ type: "loadMovies", payload: data });
+    else dispatch({ type: "error", payload: data.Error });
+  }
+
+  // put in useEffect trigger when reach end of page - also need to create loadMoreMovies action
+  async function loadMoreMovies() {
+    dispatch({ type: "loading" });
+    const res = await fetch(
+      `${API_URL}${API_KEY}&s=${searchTerm}&page=${currentPage}`
+    );
+    const data = await res.json();
+    dispatch({ type: "loaded" });
+    if (data.Response === "True")
+      dispatch({ type: "loadMoreMovies", payload: data });
     else dispatch({ type: "error", payload: data.Error });
   }
 
@@ -120,6 +142,7 @@ function MovieProvider({ children }) {
         maxPages,
         currentPage,
         searchMovies,
+        loadMoreMovies,
 
         dispatch,
       }}
