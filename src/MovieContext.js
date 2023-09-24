@@ -10,7 +10,7 @@ const initialState = {
   searchTerm: "", //the search term
   isLoading: false, //true during async fetch
   error: "", //error message
-  maxPages: null, //track total pages from fetch results
+  totalResults: 0, //track total pages from fetch results
   currentPage: null, //track current page
 };
 // const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
@@ -37,7 +37,7 @@ function reducer(state, action) {
         ...state,
         movies: action.payload.Search,
         error: "",
-        maxPages: Math.trunc(action.payload.totalResults / 10),
+        totalResults: action.payload.totalResults,
         currentPage: 2,
       };
     case "loadMoreMovies":
@@ -86,7 +86,15 @@ function reducer(state, action) {
 
 function MovieProvider({ children }) {
   const [
-    { movies, favorites, searchTerm, isLoading, error, maxPages, currentPage },
+    {
+      movies,
+      favorites,
+      searchTerm,
+      isLoading,
+      error,
+      totalResults,
+      currentPage,
+    },
     dispatch,
   ] = useReducer(reducer, initialState, () => {
     const storedValue = localStorage.getItem("favorites");
@@ -139,7 +147,7 @@ function MovieProvider({ children }) {
         searchTerm,
         isLoading,
         error,
-        maxPages,
+        totalResults,
         currentPage,
         searchMovies,
         loadMoreMovies,

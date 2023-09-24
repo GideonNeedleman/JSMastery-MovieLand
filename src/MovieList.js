@@ -5,15 +5,14 @@ import Spinner from "./Spinner";
 import ScrollToTop from "./ScrollToTop";
 
 function MovieList() {
-  const { movies, isLoading, loadMoreMovies, maxPages, currentPage } =
-    useMovie();
+  const { movies, isLoading, loadMoreMovies, totalResults } = useMovie();
   return (
     <>
       <InfiniteScroll
         className="container"
         dataLength={movies.length}
         next={loadMoreMovies}
-        hasMore={currentPage <= maxPages}
+        hasMore={movies.length === 0 || movies.length < totalResults}
         endMessage={<h2>All results loaded</h2>}
       >
         {movies.map((movie) => (
