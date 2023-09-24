@@ -421,6 +421,7 @@ h1 {
   height: 2.5rem;
   border-radius: 100%;
   text-align: center;
+  z-index: 999;
   /* margin-top: -5rem; */
 }
 
@@ -433,6 +434,10 @@ h1 {
   }
   .detail {
     padding: 4rem 2rem;
+  }
+
+  .detail p {
+    max-width: 100%;
   }
 
   .search {
@@ -453,6 +458,9 @@ h1 {
     width: 100%;
   }
   .favorites li {
+    width: 100%;
+  }
+  .bookmark {
     width: 100%;
   }
 }

@@ -20,3 +20,4 @@ Search for movies, view movie details, add movies to a favorites list.
 13. ~~Style return to top button~~
 14. ~~Restyle nav bar~~
 15. Add star ratings to Bookmark widget & Favorite
+16. fix ScrollToTop button, needs to overlay MovieCard textbox
