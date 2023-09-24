@@ -2,6 +2,7 @@ import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import ErrorMessage from "./ErrorMessage";
 import Header from "./Header";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   /*   const searchMovies = async (title) => {
@@ -59,15 +60,7 @@ const App = () => {
       <SearchBar />
       <MovieList />
       <ErrorMessage />
-      {/*       <div className="empty">
-        {currentPage < maxPages ? (
-          <button type="button" onClick={() => handleClick()}>
-            Load More
-          </button>
-        ) : (
-          <span></span>
-        )}
-      </div> */}
+      {/* <ScrollToTop /> */}
     </div>
   );
 };

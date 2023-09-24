@@ -5,6 +5,7 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -113,6 +114,13 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.container h2 {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #f9d3b4;
 }
 
 .movie {
@@ -401,6 +409,14 @@ h1 {
   outline: none;
   color: #a1a1a1;
   background: #1f2123;
+}
+
+.scroll-to-top {
+  cursor: pointer;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  /* margin-top: -5rem; */
 }
 
 @media screen and (max-width: 600px) {
