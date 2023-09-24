@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useMovie } from "./MovieContext";
+import placeholder from "./assets/vertical-placeholder.jpg";
 
 function Favorite({ fav }) {
   const { dispatch } = useMovie();
@@ -20,7 +21,10 @@ function Favorite({ fav }) {
         &times;
       </span>
       <Link to={"/detail/" + fav.imdbid}>
-        <img src={fav.poster} alt={`poster of ${fav.title}`} />
+        <img
+          src={fav.poster !== "N/A" ? fav.poster : placeholder}
+          alt={`poster of ${fav.title}`}
+        />
       </Link>
       <div className="title-note">
         <p className="title">{fav.title}</p>

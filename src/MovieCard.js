@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import placeholder from "./assets/vertical-placeholder.jpg";
 
 const MovieCard = ({ movie }) => {
   return (
@@ -10,11 +11,7 @@ const MovieCard = ({ movie }) => {
 
         <div>
           <img
-            src={
-              movie.Poster !== "N/A"
-                ? movie.Poster
-                : "https://via.placeholder.com/400"
-            }
+            src={movie.Poster !== "N/A" ? movie.Poster : placeholder}
             alt={movie.Title}
           />
         </div>

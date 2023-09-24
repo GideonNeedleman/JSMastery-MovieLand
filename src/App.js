@@ -2,7 +2,6 @@ import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import ErrorMessage from "./ErrorMessage";
 import Header from "./Header";
-import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   /*   const searchMovies = async (title) => {
@@ -60,7 +59,6 @@ const App = () => {
       <SearchBar />
       <MovieList />
       <ErrorMessage />
-      {/* <ScrollToTop /> */}
     </div>
   );
 };
