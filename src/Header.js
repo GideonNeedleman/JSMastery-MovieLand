@@ -8,7 +8,7 @@ function Header({ title }) {
       <div className={styles.nav}>
         <NavLink to={"/"}>Movie Search</NavLink>
         <NavLink to={"/favorites"}>
-          <img src={bookmark} class="img-fluid rounded-top" alt="" />
+          <img src={bookmark} alt="link to favorites" />
         </NavLink>
       </div>
       <h1>{title}</h1>

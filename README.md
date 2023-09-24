@@ -18,4 +18,5 @@ Search for movies, view movie details, add movies to a favorites list.
 11. Fix missing images in Detail & Favorites
 12. Refactor reducer to combine loadMovies & loadMoreMovies
 13. ~~Style return to top button~~
-14. Restyle nav bar
+14. ~~Restyle nav bar~~
+15. Add star ratings to Bookmark widget & Favorite

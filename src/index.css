@@ -448,6 +448,13 @@ h1 {
     width: 20px;
     height: 20px;
   }
+
+  .favorites ul {
+    width: 100%;
+  }
+  .favorites li {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 400px) {
